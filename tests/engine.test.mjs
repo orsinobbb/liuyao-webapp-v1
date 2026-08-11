@@ -1,0 +1,16 @@
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+import {lineValuesToCodes} from '../src/engine/hexagram.js';import {ganzhiDayFromGregorian,xunVoidFromGanzhi,approximateMonthBranch} from '../src/engine/calendar.js';import {relativeFromPalace} from '../src/engine/elements.js';import {returnRelation} from '../src/engine/relations.js';import {resolveUseGod} from '../src/engine/useGod.js';
+const here=path.dirname(fileURLToPath(import.meta.url));const read=p=>JSON.parse(fs.readFileSync(path.join(here,'..',p),'utf8'));const assert=(c,m)=>{if(!c)throw Error(m)};
+const xk=read('data/xunkong.json');
+assert(ganzhiDayFromGregorian('2026-08-09').ganzhi==='乙卯','2026-08-09 應為乙卯');
+assert(ganzhiDayFromGregorian('2026-08-10').ganzhi==='丙辰','2026-08-10 應為丙辰');
+assert(ganzhiDayFromGregorian('2026-08-11').ganzhi==='丁巳','2026-08-11 應為丁巳');
+assert(approximateMonthBranch('2026-08-11').branch==='申','8/11 立秋後應輔助為申月');
+assert(xunVoidFromGanzhi('丁巳',xk).voidBranches.join('')==='子丑','丁巳旬空應子丑');
+assert(lineValuesToCodes([7,7,7,7,7,7]).originalCode==='111111','全陽應乾');
+assert(lineValuesToCodes([9,7,7,7,7,7]).changedCode==='011111','初爻老陽應翻陰');
+assert(relativeFromPalace('金','木')==='妻財','金剋木為妻財');
+assert(returnRelation('木','水')==='回頭生','木變水：水回頭生木');
+const configuredUse=resolveUseGod([{relative:'兄弟',moving:false,isShi:false,strength:{score:0}}],{categoryId:'custom',manualRelative:'',questionCategories:{version:'test',categories:[{id:'custom',primary:['兄弟']}]}});
+assert(configuredUse.primary?.relative==='兄弟'&&configuredUse.ruleVersion==='test','用神應由分類規則資料驅動');
+console.log('OK engine.test.mjs');

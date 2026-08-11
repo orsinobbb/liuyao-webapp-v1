@@ -1,0 +1,6 @@
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .results { min-width: 0; }
+  .results > *, .result-block { min-width: 0; width: 100%; max-width: 100%; }
+  .table-wrap { min-width: 0; width: 100%; max-width: 100%; overflow-x: auto; }
+}

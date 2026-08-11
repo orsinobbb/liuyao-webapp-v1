@@ -1,0 +1,42 @@
+{
+  "version": "0.2.0",
+  "disclaimer": "工程化輔助權重，用於排序與可解釋性，不宣稱是古籍固定分數。可依流派調整。",
+  "weights": {
+    "monthSameBranch": 4,
+    "monthSameElement": 2.5,
+    "monthGeneratesLine": 2,
+    "monthControlsLine": -2.5,
+    "monthClash": -4,
+    "monthCombine": 1,
+    "daySameBranch": 2.5,
+    "daySameElement": 1.5,
+    "dayGeneratesLine": 2,
+    "dayControlsLine": -2,
+    "dayClash": -1.5,
+    "dayCombine": 1,
+    "moving": 1,
+    "void": -2.5
+  },
+  "bands": [
+    {
+      "min": 5,
+      "label": "旺"
+    },
+    {
+      "min": 2,
+      "label": "偏旺"
+    },
+    {
+      "min": -1,
+      "label": "平"
+    },
+    {
+      "min": -4,
+      "label": "偏弱"
+    },
+    {
+      "min": -999,
+      "label": "弱"
+    }
+  ]
+}

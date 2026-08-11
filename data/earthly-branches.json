@@ -1,0 +1,77 @@
+{
+  "version": "1.0.0",
+  "branches": [
+    {
+      "index": 1,
+      "name": "子",
+      "element": "水",
+      "yinYang": "陽"
+    },
+    {
+      "index": 2,
+      "name": "丑",
+      "element": "土",
+      "yinYang": "陰"
+    },
+    {
+      "index": 3,
+      "name": "寅",
+      "element": "木",
+      "yinYang": "陽"
+    },
+    {
+      "index": 4,
+      "name": "卯",
+      "element": "木",
+      "yinYang": "陰"
+    },
+    {
+      "index": 5,
+      "name": "辰",
+      "element": "土",
+      "yinYang": "陽"
+    },
+    {
+      "index": 6,
+      "name": "巳",
+      "element": "火",
+      "yinYang": "陰"
+    },
+    {
+      "index": 7,
+      "name": "午",
+      "element": "火",
+      "yinYang": "陽"
+    },
+    {
+      "index": 8,
+      "name": "未",
+      "element": "土",
+      "yinYang": "陰"
+    },
+    {
+      "index": 9,
+      "name": "申",
+      "element": "金",
+      "yinYang": "陽"
+    },
+    {
+      "index": 10,
+      "name": "酉",
+      "element": "金",
+      "yinYang": "陰"
+    },
+    {
+      "index": 11,
+      "name": "戌",
+      "element": "土",
+      "yinYang": "陽"
+    },
+    {
+      "index": 12,
+      "name": "亥",
+      "element": "水",
+      "yinYang": "陰"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "weights": {
+    "strong": 2,
+    "weak": -2,
+    "void": -1,
+    "monthBreak": -1.5,
+    "moving": 0.5,
+    "useGeneratesShi": 1.5,
+    "useControlsShi": -1.5,
+    "shiGeneratesUse": -0.5,
+    "shiControlsUse": 0.3,
+    "same": 0.5,
+    "movingSource": 1,
+    "movingAvoid": -1,
+    "returnGenerate": 0.6,
+    "returnControl": -0.8
+  },
+  "thresholds": [
+    { "gte": 3, "label": "偏吉／較易成" },
+    { "gte": 1, "label": "偏有利" },
+    { "gt": -1, "label": "拉鋸／待條件" },
+    { "gt": -3, "label": "偏不利" },
+    { "default": true, "label": "阻力較大" }
+  ],
+  "principles": [
+    "先定用神，再看用神與世爻，不由單一神煞直接下結論。",
+    "動爻視為變化來源；變出之六親依本卦卦宮五行定六親。",
+    "空亡、月破、日沖均是狀態，須與旺衰、動靜、生剋合看。",
+    "分數僅是工程化排序，不取代傳統條件判斷。"
+  ],
+  "confidence": {
+    "high": "規則鏈完整且關鍵爻明確",
+    "medium": "有主要依據但存在多候選/互見",
+    "low": "用神不明或資料不足"
+  }
+}

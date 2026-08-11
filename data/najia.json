@@ -1,0 +1,247 @@
+{
+  "version": "1.0.0",
+  "lineOrder": "bottom-to-top",
+  "note": "下卦使用 inner；上卦使用 outer。每項依爻位由下往上排列。",
+  "trigrams": {
+    "乾": {
+      "inner": [
+        {
+          "stem": "甲",
+          "branch": "子"
+        },
+        {
+          "stem": "甲",
+          "branch": "寅"
+        },
+        {
+          "stem": "甲",
+          "branch": "辰"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "壬",
+          "branch": "午"
+        },
+        {
+          "stem": "壬",
+          "branch": "申"
+        },
+        {
+          "stem": "壬",
+          "branch": "戌"
+        }
+      ]
+    },
+    "坤": {
+      "inner": [
+        {
+          "stem": "乙",
+          "branch": "未"
+        },
+        {
+          "stem": "乙",
+          "branch": "巳"
+        },
+        {
+          "stem": "乙",
+          "branch": "卯"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "癸",
+          "branch": "丑"
+        },
+        {
+          "stem": "癸",
+          "branch": "亥"
+        },
+        {
+          "stem": "癸",
+          "branch": "酉"
+        }
+      ]
+    },
+    "震": {
+      "inner": [
+        {
+          "stem": "庚",
+          "branch": "子"
+        },
+        {
+          "stem": "庚",
+          "branch": "寅"
+        },
+        {
+          "stem": "庚",
+          "branch": "辰"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "庚",
+          "branch": "午"
+        },
+        {
+          "stem": "庚",
+          "branch": "申"
+        },
+        {
+          "stem": "庚",
+          "branch": "戌"
+        }
+      ]
+    },
+    "巽": {
+      "inner": [
+        {
+          "stem": "辛",
+          "branch": "丑"
+        },
+        {
+          "stem": "辛",
+          "branch": "亥"
+        },
+        {
+          "stem": "辛",
+          "branch": "酉"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "辛",
+          "branch": "未"
+        },
+        {
+          "stem": "辛",
+          "branch": "巳"
+        },
+        {
+          "stem": "辛",
+          "branch": "卯"
+        }
+      ]
+    },
+    "坎": {
+      "inner": [
+        {
+          "stem": "戊",
+          "branch": "寅"
+        },
+        {
+          "stem": "戊",
+          "branch": "辰"
+        },
+        {
+          "stem": "戊",
+          "branch": "午"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "戊",
+          "branch": "申"
+        },
+        {
+          "stem": "戊",
+          "branch": "戌"
+        },
+        {
+          "stem": "戊",
+          "branch": "子"
+        }
+      ]
+    },
+    "離": {
+      "inner": [
+        {
+          "stem": "己",
+          "branch": "卯"
+        },
+        {
+          "stem": "己",
+          "branch": "丑"
+        },
+        {
+          "stem": "己",
+          "branch": "亥"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "己",
+          "branch": "酉"
+        },
+        {
+          "stem": "己",
+          "branch": "未"
+        },
+        {
+          "stem": "己",
+          "branch": "巳"
+        }
+      ]
+    },
+    "艮": {
+      "inner": [
+        {
+          "stem": "丙",
+          "branch": "辰"
+        },
+        {
+          "stem": "丙",
+          "branch": "午"
+        },
+        {
+          "stem": "丙",
+          "branch": "申"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "丙",
+          "branch": "戌"
+        },
+        {
+          "stem": "丙",
+          "branch": "子"
+        },
+        {
+          "stem": "丙",
+          "branch": "寅"
+        }
+      ]
+    },
+    "兌": {
+      "inner": [
+        {
+          "stem": "丁",
+          "branch": "巳"
+        },
+        {
+          "stem": "丁",
+          "branch": "卯"
+        },
+        {
+          "stem": "丁",
+          "branch": "丑"
+        }
+      ],
+      "outer": [
+        {
+          "stem": "丁",
+          "branch": "亥"
+        },
+        {
+          "stem": "丁",
+          "branch": "酉"
+        },
+        {
+          "stem": "丁",
+          "branch": "未"
+        }
+      ]
+    }
+  }
+}

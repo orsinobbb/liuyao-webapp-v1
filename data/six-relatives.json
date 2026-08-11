@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "reference": "以卦宮五行為「我」",
+  "rules": [
+    {
+      "relation": "same",
+      "meaning": "同我",
+      "relative": "兄弟"
+    },
+    {
+      "relation": "palace_generates_line",
+      "meaning": "我生",
+      "relative": "子孫"
+    },
+    {
+      "relation": "palace_controls_line",
+      "meaning": "我剋",
+      "relative": "妻財"
+    },
+    {
+      "relation": "line_controls_palace",
+      "meaning": "剋我",
+      "relative": "官鬼"
+    },
+    {
+      "relation": "line_generates_palace",
+      "meaning": "生我",
+      "relative": "父母"
+    }
+  ]
+}

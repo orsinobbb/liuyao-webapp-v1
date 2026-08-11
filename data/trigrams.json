@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "lineOrder": "bottom-to-top",
+  "trigrams": [
+    {
+      "name": "乾",
+      "code": "111",
+      "symbol": "☰",
+      "nature": "天",
+      "element": "金",
+      "yinYang": "陽",
+      "direction": "西北"
+    },
+    {
+      "name": "兌",
+      "code": "110",
+      "symbol": "☱",
+      "nature": "澤",
+      "element": "金",
+      "yinYang": "陰",
+      "direction": "西"
+    },
+    {
+      "name": "離",
+      "code": "101",
+      "symbol": "☲",
+      "nature": "火",
+      "element": "火",
+      "yinYang": "陰",
+      "direction": "南"
+    },
+    {
+      "name": "震",
+      "code": "100",
+      "symbol": "☳",
+      "nature": "雷",
+      "element": "木",
+      "yinYang": "陽",
+      "direction": "東"
+    },
+    {
+      "name": "巽",
+      "code": "011",
+      "symbol": "☴",
+      "nature": "風",
+      "element": "木",
+      "yinYang": "陰",
+      "direction": "東南"
+    },
+    {
+      "name": "坎",
+      "code": "010",
+      "symbol": "☵",
+      "nature": "水",
+      "element": "水",
+      "yinYang": "陽",
+      "direction": "北"
+    },
+    {
+      "name": "艮",
+      "code": "001",
+      "symbol": "☶",
+      "nature": "山",
+      "element": "土",
+      "yinYang": "陽",
+      "direction": "東北"
+    },
+    {
+      "name": "坤",
+      "code": "000",
+      "symbol": "☷",
+      "nature": "地",
+      "element": "土",
+      "yinYang": "陰",
+      "direction": "西南"
+    }
+  ]
+}
