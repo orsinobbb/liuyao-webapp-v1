@@ -1,6 +1,6 @@
 import { loadAllData } from './data-loader.js';
 import { createChart } from './engine/chart.js';
-import { ganzhiDayFromGregorian, approximateMonthBranch } from './engine/calendar.js';
+import { ganzhiDayFromGregorian, monthBranchFromDateTime } from './engine/calendar.js';
 import { saveHistory, loadHistory, clearHistory } from './storage.js';
 import { downloadJson, copySummary } from './export.js';
 
@@ -17,7 +17,8 @@ function renderLineInputs(values=defaultValues){
     row.innerHTML=`<span class="line-no">${['初','二','三','四','五','上'][i]}爻</span><div class="seg">${[6,7,8,9].map(v=>`<button type="button" class="line-value ${values[i]===v?'active':''}" data-value="${v}">${lineCell(v)}</button>`).join('')}</div>`;
     box.appendChild(row);
   }
-  $$('.line-value').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('.line-value').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+  $$('.line-value').forEach(b=>b.onclick=()=>{b.parentElement.querySelectorAll('.line-value').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-pressed','false')});b.classList.add('active');b.setAttribute('aria-pressed','true')});
+  $$('.line-value').forEach(b=>b.setAttribute('aria-pressed',b.classList.contains('active')?'true':'false'));
 }
 function readLines(){
   const vals=Array(6);
@@ -26,13 +27,14 @@ function readLines(){
 }
 function syncCalendarHints(){
   const date=$('#date').value; if(!date)return;
-  const g=ganzhiDayFromGregorian(date),m=approximateMonthBranch(date);
-  $('#dayHint').textContent=`自動：${g.ganzhi}`; $('#monthHint').textContent=`節氣快速輔助：${m.branch}月（${m.boundary}）`;
+  const g=ganzhiDayFromGregorian(date),m=monthBranchFromDateTime(date,$('#time').value||'12:00');
+  $('#dayHint').textContent=`自動：${g.ganzhi}`; $('#monthHint').textContent=`天文節氣：${m.branch}月（交界 ${m.boundary}）`;
   if(!$('#dayManual').dataset.touched) $('#dayManual').value='';
   if(!$('#monthManual').dataset.touched) $('#monthManual').value='';
 }
 function categoryOptions(){
-  $('#category').innerHTML=DATA.questionCategories.categories.map(x=>`<option value="${x.id}">${x.label}</option>`).join('');
+  const select=$('#category'); select.replaceChildren();
+  DATA.questionCategories.categories.forEach(item=>{const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.appendChild(option)});
 }
 function chip(t){return `<span class="chip">${t}</span>`}
 function strengthClass(b){return b.includes('旺')?'good':b.includes('弱')?'bad':'neutral'}
@@ -54,16 +56,26 @@ function renderChart(c){
   $('#trace').textContent=JSON.stringify(c,null,2);
   renderHistory();
 }
-function makeInput(){return {question:$('#question').value.trim(),categoryId:$('#category').value,manualRelative:$('#manualRelative').value,date:$('#date').value,dayGanzhi:$('#dayManual').value.trim(),monthBranch:$('#monthManual').value,lines:readLines()}}
+function makeInput(){return {question:$('#question').value.trim(),categoryId:$('#category').value,manualRelative:$('#manualRelative').value,date:$('#date').value,time:$('#time').value,dayGanzhi:$('#dayManual').value.trim(),monthBranch:$('#monthManual').value,lines:readLines()}}
 function cast(){try{const c=createChart(makeInput(),DATA);saveHistory(c);renderChart(c)}catch(e){alert(e.message)}}
 function randomDemo(){renderLineInputs(Array.from({length:6},()=>[6,7,8,9][Math.floor(Math.random()*4)]));cast()}
-function renderHistory(){const h=loadHistory();$('#historyList').innerHTML=h.length?h.slice(0,8).map((x,i)=>`<button class="history-item" data-i="${i}"><b>${x.original.displayName}${x.codes.movingLines.length?' → '+x.changed.displayName:''}</b><span>${x.context.date}・${x.question||'未命名問事'}</span></button>`).join(''):'<p class="muted">尚無紀錄</p>';$$('.history-item').forEach(b=>b.onclick=()=>renderChart(h[Number(b.dataset.i)]))}
+function renderHistory(){
+  const history=loadHistory().filter(item=>item?.original?.displayName&&item?.changed?.displayName&&item?.context?.date&&Array.isArray(item?.codes?.movingLines));
+  const box=$('#historyList'); box.replaceChildren();
+  if(!history.length){const empty=document.createElement('p');empty.className='muted';empty.textContent='尚無紀錄';box.appendChild(empty);return}
+  history.slice(0,8).forEach(item=>{
+    const button=document.createElement('button');button.className='history-item';button.type='button';
+    const title=document.createElement('b');title.textContent=`${item.original.displayName}${item.codes.movingLines.length?' → '+item.changed.displayName:''}`;
+    const detail=document.createElement('span');detail.textContent=`${item.context.date}・${item.question||'未命名問事'}`;
+    button.append(title,detail);button.onclick=()=>renderChart(item);box.appendChild(button);
+  });
+}
 
 async function init(){
-  DATA=await loadAllData(); categoryOptions(); $('#date').value=today(); renderLineInputs(); syncCalendarHints(); renderHistory();
-  $('#date').onchange=syncCalendarHints; $('#dayManual').oninput=e=>e.target.dataset.touched='1'; $('#monthManual').onchange=e=>e.target.dataset.touched='1';
+  DATA=await loadAllData(); categoryOptions(); $('#date').value=today(); $('#time').value='12:00'; renderLineInputs(); syncCalendarHints(); renderHistory();
+  $('#date').onchange=syncCalendarHints; $('#time').onchange=syncCalendarHints; $('#dayManual').oninput=e=>e.target.dataset.touched='1'; $('#monthManual').onchange=e=>e.target.dataset.touched='1';
   $('#cast').onclick=cast; $('#demo').onclick=randomDemo; $('#reset').onclick=()=>{renderLineInputs();$('#question').value='';$('#manualRelative').value='';$('#result').hidden=true;$('#empty').hidden=false};
   $('#export').onclick=()=>currentChart&&downloadJson(currentChart); $('#copy').onclick=async()=>{if(currentChart){await copySummary(currentChart);$('#copy').textContent='已複製';setTimeout(()=>$('#copy').textContent='複製摘要',1000)}};
   $('#clearHistory').onclick=()=>{clearHistory();renderHistory()};
 }
-init().catch(e=>{document.body.innerHTML=`<pre style="padding:24px">啟動失敗：${e.stack}</pre>`});
+init().catch(e=>{const pre=document.createElement('pre');pre.style.padding='24px';pre.textContent=`啟動失敗：${e.stack||e.message}`;document.body.replaceChildren(pre)});

@@ -3,10 +3,10 @@
 <main class="layout">
 <section class="panel controls">
   <div class="section-title"><h2>起卦輸入</h2><span class="muted">初爻 → 上爻</span></div>
-  <div class="field"><label>所問之事</label><textarea id="question" rows="2" placeholder="例如：遺失的手機能否找回？"></textarea></div>
+  <div class="field"><label>所問之事</label><textarea id="question" rows="2" maxlength="500" placeholder="例如：遺失的手機能否找回？"></textarea></div>
   <div class="field"><label>問事分類</label><select id="category"></select></div>
   <div class="field"><label>手動指定用神（可選）</label><select id="manualRelative"><option value="">依分類自動</option><option>父母</option><option>官鬼</option><option>妻財</option><option>兄弟</option><option>子孫</option></select></div>
-  <div class="field"><label>起卦日期</label><input id="date" type="date"><span class="hint" id="dayHint"></span></div>
+  <div class="calendar-grid"><div class="field"><label>起卦日期</label><input id="date" type="date" min="1901-01-01" max="2099-12-31"><span class="hint" id="dayHint"></span></div><div class="field"><label>起卦時間（台北）</label><input id="time" type="time" value="12:00"><span class="hint">用於精確判定節氣交界</span></div></div>
   <div class="calendar-grid"><div class="field"><label>日柱覆寫</label><input id="dayManual" maxlength="2" placeholder="例 丁巳"><span class="hint">空白＝自動；若採子初換日請覆寫</span></div><div class="field"><label>月建覆寫</label><select id="monthManual"><option value="">自動</option><option>子</option><option>丑</option><option>寅</option><option>卯</option><option>辰</option><option>巳</option><option>午</option><option>未</option><option>申</option><option>酉</option><option>戌</option><option>亥</option></select><span class="hint" id="monthHint"></span></div></div>
   <div class="section-title"><h3>六爻</h3><span class="muted">6 老陰・7 少陽・8 少陰・9 老陽</span></div><div id="lineInputs" class="line-inputs"></div>
   <div class="actions"><button id="cast" class="btn primary">排卦＋推理</button><button id="demo" class="btn">隨機</button><button id="reset" class="btn ghost">清空</button></div>
@@ -20,5 +20,5 @@
     <section class="panel result-block"><div class="tools"><button id="copy" class="btn">複製摘要</button><button id="export" class="btn">匯出 JSON</button></div><details><summary>查看完整推理資料（Debug / API-ready）</summary><pre id="trace" class="trace"></pre></details></section>
   </div>
 </section></main>
-<footer class="footer">月建自動值採節氣日期快速輔助，節氣交界請手動覆寫。變爻六親依《增刪卜易》所述以前卦卦宮五行定。術數結果屬傳統文化規則模擬，工程分數僅供排序與解釋，不應作為醫療、法律、財務等重大決策的唯一依據。</footer>
+<footer class="footer">月建自動值依太陽視黃經計算節氣交界（Asia/Taipei，1901–2099），仍可依所採曆書手動覆寫。變爻六親依《增刪卜易》所述以前卦卦宮五行定。術數結果屬傳統文化規則模擬，工程分數僅供排序與解釋，不應作為醫療、法律、財務等重大決策的唯一依據。</footer>
 <script type="module" src="./src/app.js"></script></body></html>

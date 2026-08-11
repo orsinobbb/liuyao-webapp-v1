@@ -8,9 +8,11 @@ import { returnRelation } from './relations.js';
 import { resolveUseGod } from './useGod.js';
 import { judge } from './judgement.js';
 import { buildTiming } from './timing.js';
-import { ganzhiDayFromGregorian, approximateMonthBranch, xunVoidFromGanzhi } from './calendar.js';
+import { ganzhiDayFromGregorian, monthBranchFromDateTime, xunVoidFromGanzhi } from './calendar.js';
+import { validateChartInput } from './validation.js';
 
 export function createChart(input,data){
+  input=validateChartInput(input,data);
   const codes=lineValuesToCodes(input.lines);
   const original=findHexagram(codes.originalCode,data.hexagrams);
   const changed=findHexagram(codes.changedCode,data.hexagrams);
@@ -20,7 +22,7 @@ export function createChart(input,data){
   const autoDay=ganzhiDayFromGregorian(input.date);
   const dayGanzhi=input.dayGanzhi||autoDay.ganzhi;
   const dayStem=dayGanzhi[0], dayBranch=dayGanzhi[1];
-  const autoMonth=approximateMonthBranch(input.date);
+  const autoMonth=monthBranchFromDateTime(input.date,input.time);
   const monthBranch=input.monthBranch||autoMonth.branch;
   const xun=xunVoidFromGanzhi(dayGanzhi,data.xunkong);
   const spirits=buildSixSpirits(dayStem,data.sixSpirits);
@@ -43,9 +45,9 @@ export function createChart(input,data){
   });
   const useGod=resolveUseGod(lines,{categoryId:input.categoryId,manualRelative:input.manualRelative,questionCategories:data.questionCategories});
   const chart={
-    id:crypto?.randomUUID?crypto.randomUUID():`${Date.now()}`,
+    id:globalThis.crypto?.randomUUID?globalThis.crypto.randomUUID():`${Date.now()}`,
     createdAt:new Date().toISOString(), question:input.question||'', categoryId:input.categoryId||'', manualRelative:input.manualRelative||'',
-    context:{date:input.date,dayGanzhi,dayStem,dayBranch,monthBranch,xunStart:xun.xunStart,voidBranches:xun.voidBranches,autoDayGanzhi:autoDay.ganzhi,autoMonthBranch:autoMonth.branch,monthBoundaryHint:autoMonth.boundary},
+    context:{date:input.date,time:input.time,timezone:'Asia/Taipei',dayGanzhi,dayStem,dayBranch,monthBranch,xunStart:xun.xunStart,voidBranches:xun.voidBranches,autoDayGanzhi:autoDay.ganzhi,autoMonthBranch:autoMonth.branch,monthBoundaryHint:autoMonth.boundary,monthBoundaryUtc:autoMonth.boundaryUtc},
     inputLines:[...input.lines],codes,original,changed,lines,useGod,
     rules:{pipelineVersion:data.enginePipeline?.version||'unversioned',questionCategoriesVersion:data.questionCategories?.version||'unversioned',strengthWeightsVersion:data.strengthWeights?.version||'unversioned',judgementVersion:data.judgementRules?.version||'unversioned'}
   };
