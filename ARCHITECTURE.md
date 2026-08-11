@@ -7,7 +7,8 @@
 `src/engine/chart.js` 統一產生一張 immutable-ish chart snapshot。
 
 ## 3. Domain engines
-- calendar.js：日干支、旬空入口、月建輔助、應期日期掃描
+- calendar.js：日干支、旬空入口、太陽視黃經節氣月建、應期日期掃描
+- validation.js：排盤輸入的集中驗證與正規化
 - hexagram.js：本變卦 code
 - najia.js：內外卦納甲
 - elements.js：五行關係、六親、用神角色
