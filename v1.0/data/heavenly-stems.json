@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "stems": [
+    {
+      "index": 1,
+      "name": "甲",
+      "element": "木",
+      "yinYang": "陽"
+    },
+    {
+      "index": 2,
+      "name": "乙",
+      "element": "木",
+      "yinYang": "陰"
+    },
+    {
+      "index": 3,
+      "name": "丙",
+      "element": "火",
+      "yinYang": "陽"
+    },
+    {
+      "index": 4,
+      "name": "丁",
+      "element": "火",
+      "yinYang": "陰"
+    },
+    {
+      "index": 5,
+      "name": "戊",
+      "element": "土",
+      "yinYang": "陽"
+    },
+    {
+      "index": 6,
+      "name": "己",
+      "element": "土",
+      "yinYang": "陰"
+    },
+    {
+      "index": 7,
+      "name": "庚",
+      "element": "金",
+      "yinYang": "陽"
+    },
+    {
+      "index": 8,
+      "name": "辛",
+      "element": "金",
+      "yinYang": "陰"
+    },
+    {
+      "index": 9,
+      "name": "壬",
+      "element": "水",
+      "yinYang": "陽"
+    },
+    {
+      "index": 10,
+      "name": "癸",
+      "element": "水",
+      "yinYang": "陰"
+    }
+  ]
+}

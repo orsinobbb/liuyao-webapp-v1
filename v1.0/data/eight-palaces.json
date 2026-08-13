@@ -1,0 +1,703 @@
+{
+  "version": "1.0.0",
+  "stageOrder": [
+    "本宮",
+    "一世",
+    "二世",
+    "三世",
+    "四世",
+    "五世",
+    "遊魂",
+    "歸魂"
+  ],
+  "palaces": [
+    {
+      "palace": "乾",
+      "element": "金",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "111111",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 1,
+          "name": "乾",
+          "displayName": "乾為天"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "011111",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 44,
+          "name": "姤",
+          "displayName": "天風姤"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "001111",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 33,
+          "name": "遯",
+          "displayName": "天山遯"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "000111",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 12,
+          "name": "否",
+          "displayName": "天地否"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "000011",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 20,
+          "name": "觀",
+          "displayName": "風地觀"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "000001",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 23,
+          "name": "剝",
+          "displayName": "山地剝"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "000101",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 35,
+          "name": "晉",
+          "displayName": "火地晉"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "111101",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 14,
+          "name": "大有",
+          "displayName": "火天大有"
+        }
+      ]
+    },
+    {
+      "palace": "兌",
+      "element": "金",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "110110",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 58,
+          "name": "兌",
+          "displayName": "兌為澤"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "010110",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 47,
+          "name": "困",
+          "displayName": "澤水困"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "000110",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 45,
+          "name": "萃",
+          "displayName": "澤地萃"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "001110",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 31,
+          "name": "咸",
+          "displayName": "澤山咸"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "001010",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 39,
+          "name": "蹇",
+          "displayName": "水山蹇"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "001000",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 15,
+          "name": "謙",
+          "displayName": "地山謙"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "001100",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 62,
+          "name": "小過",
+          "displayName": "雷山小過"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "110100",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 54,
+          "name": "歸妹",
+          "displayName": "雷澤歸妹"
+        }
+      ]
+    },
+    {
+      "palace": "離",
+      "element": "火",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "101101",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 30,
+          "name": "離",
+          "displayName": "離為火"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "001101",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 56,
+          "name": "旅",
+          "displayName": "火山旅"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "011101",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 50,
+          "name": "鼎",
+          "displayName": "火風鼎"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "010101",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 64,
+          "name": "未濟",
+          "displayName": "火水未濟"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "010001",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 4,
+          "name": "蒙",
+          "displayName": "山水蒙"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "010011",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 59,
+          "name": "渙",
+          "displayName": "風水渙"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "010111",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 6,
+          "name": "訟",
+          "displayName": "天水訟"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "101111",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 13,
+          "name": "同人",
+          "displayName": "天火同人"
+        }
+      ]
+    },
+    {
+      "palace": "震",
+      "element": "木",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "100100",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 51,
+          "name": "震",
+          "displayName": "震為雷"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "000100",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 16,
+          "name": "豫",
+          "displayName": "雷地豫"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "010100",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 40,
+          "name": "解",
+          "displayName": "雷水解"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "011100",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 32,
+          "name": "恆",
+          "displayName": "雷風恆"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "011000",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 46,
+          "name": "升",
+          "displayName": "地風升"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "011010",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 48,
+          "name": "井",
+          "displayName": "水風井"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "011110",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 28,
+          "name": "大過",
+          "displayName": "澤風大過"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "100110",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 17,
+          "name": "隨",
+          "displayName": "澤雷隨"
+        }
+      ]
+    },
+    {
+      "palace": "巽",
+      "element": "木",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "011011",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 57,
+          "name": "巽",
+          "displayName": "巽為風"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "111011",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 9,
+          "name": "小畜",
+          "displayName": "風天小畜"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "101011",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 37,
+          "name": "家人",
+          "displayName": "風火家人"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "100011",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 42,
+          "name": "益",
+          "displayName": "風雷益"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "100111",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 25,
+          "name": "無妄",
+          "displayName": "天雷無妄"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "100101",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 21,
+          "name": "噬嗑",
+          "displayName": "火雷噬嗑"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "100001",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 27,
+          "name": "頤",
+          "displayName": "山雷頤"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "011001",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 18,
+          "name": "蠱",
+          "displayName": "山風蠱"
+        }
+      ]
+    },
+    {
+      "palace": "坎",
+      "element": "水",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "010010",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 29,
+          "name": "坎",
+          "displayName": "坎為水"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "110010",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 60,
+          "name": "節",
+          "displayName": "水澤節"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "100010",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 3,
+          "name": "屯",
+          "displayName": "水雷屯"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "101010",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 63,
+          "name": "既濟",
+          "displayName": "水火既濟"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "101110",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 49,
+          "name": "革",
+          "displayName": "澤火革"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "101100",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 55,
+          "name": "豐",
+          "displayName": "雷火豐"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "101000",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 36,
+          "name": "明夷",
+          "displayName": "地火明夷"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "010000",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 7,
+          "name": "師",
+          "displayName": "地水師"
+        }
+      ]
+    },
+    {
+      "palace": "艮",
+      "element": "土",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "001001",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 52,
+          "name": "艮",
+          "displayName": "艮為山"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "101001",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 22,
+          "name": "賁",
+          "displayName": "山火賁"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "111001",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 26,
+          "name": "大畜",
+          "displayName": "山天大畜"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "110001",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 41,
+          "name": "損",
+          "displayName": "山澤損"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "110101",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 38,
+          "name": "睽",
+          "displayName": "火澤睽"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "110111",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 10,
+          "name": "履",
+          "displayName": "天澤履"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "110011",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 61,
+          "name": "中孚",
+          "displayName": "風澤中孚"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "001011",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 53,
+          "name": "漸",
+          "displayName": "風山漸"
+        }
+      ]
+    },
+    {
+      "palace": "坤",
+      "element": "土",
+      "hexagrams": [
+        {
+          "stage": "本宮",
+          "stageIndex": 0,
+          "code": "000000",
+          "shiLine": 6,
+          "yingLine": 3,
+          "kingWen": 2,
+          "name": "坤",
+          "displayName": "坤為地"
+        },
+        {
+          "stage": "一世",
+          "stageIndex": 1,
+          "code": "100000",
+          "shiLine": 1,
+          "yingLine": 4,
+          "kingWen": 24,
+          "name": "復",
+          "displayName": "地雷復"
+        },
+        {
+          "stage": "二世",
+          "stageIndex": 2,
+          "code": "110000",
+          "shiLine": 2,
+          "yingLine": 5,
+          "kingWen": 19,
+          "name": "臨",
+          "displayName": "地澤臨"
+        },
+        {
+          "stage": "三世",
+          "stageIndex": 3,
+          "code": "111000",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 11,
+          "name": "泰",
+          "displayName": "地天泰"
+        },
+        {
+          "stage": "四世",
+          "stageIndex": 4,
+          "code": "111100",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 34,
+          "name": "大壯",
+          "displayName": "雷天大壯"
+        },
+        {
+          "stage": "五世",
+          "stageIndex": 5,
+          "code": "111110",
+          "shiLine": 5,
+          "yingLine": 2,
+          "kingWen": 43,
+          "name": "夬",
+          "displayName": "澤天夬"
+        },
+        {
+          "stage": "遊魂",
+          "stageIndex": 6,
+          "code": "111010",
+          "shiLine": 4,
+          "yingLine": 1,
+          "kingWen": 5,
+          "name": "需",
+          "displayName": "水天需"
+        },
+        {
+          "stage": "歸魂",
+          "stageIndex": 7,
+          "code": "000010",
+          "shiLine": 3,
+          "yingLine": 6,
+          "kingWen": 8,
+          "name": "比",
+          "displayName": "水地比"
+        }
+      ]
+    }
+  ]
+}

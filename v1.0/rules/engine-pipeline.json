@@ -1,0 +1,123 @@
+{
+  "version": "0.1.0",
+  "pipeline": [
+    {
+      "step": 1,
+      "id": "calendar",
+      "input": [
+        "dateTime"
+      ],
+      "output": [
+        "dayStem",
+        "dayBranch",
+        "monthBranch",
+        "xunVoid"
+      ]
+    },
+    {
+      "step": 2,
+      "id": "hexagram",
+      "input": [
+        "sixLines"
+      ],
+      "output": [
+        "originalCode",
+        "changedCode",
+        "movingLines"
+      ]
+    },
+    {
+      "step": 3,
+      "id": "palace",
+      "input": [
+        "originalCode"
+      ],
+      "output": [
+        "palace",
+        "palaceElement",
+        "shiLine",
+        "yingLine"
+      ]
+    },
+    {
+      "step": 4,
+      "id": "najia",
+      "input": [
+        "upper",
+        "lower"
+      ],
+      "output": [
+        "lineStems",
+        "lineBranches",
+        "lineElements"
+      ]
+    },
+    {
+      "step": 5,
+      "id": "sixRelatives",
+      "input": [
+        "palaceElement",
+        "lineElements"
+      ],
+      "output": [
+        "sixRelatives"
+      ]
+    },
+    {
+      "step": 6,
+      "id": "sixSpirits",
+      "input": [
+        "dayStem"
+      ],
+      "output": [
+        "sixSpirits"
+      ]
+    },
+    {
+      "step": 7,
+      "id": "relations",
+      "input": [
+        "monthBranch",
+        "dayBranch",
+        "lineBranches",
+        "movingLines"
+      ],
+      "output": [
+        "clashCombineVoidAndOtherRelations"
+      ]
+    },
+    {
+      "step": 8,
+      "id": "useGod",
+      "input": [
+        "questionCategory",
+        "chart"
+      ],
+      "output": [
+        "useGodCandidates"
+      ]
+    },
+    {
+      "step": 9,
+      "id": "judgement",
+      "input": [
+        "chart",
+        "useGodCandidates"
+      ],
+      "output": [
+        "reasoningGraph",
+        "result"
+      ]
+    },
+    {
+      "step": 10,
+      "id": "timing",
+      "input": [
+        "reasoningGraph"
+      ],
+      "output": [
+        "timingCandidates"
+      ]
+    }
+  ]
+}

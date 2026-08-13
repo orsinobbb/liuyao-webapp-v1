@@ -1,0 +1,24 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#07100f"><title>六爻玄機引擎</title><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./mobile-fixes.css"></head><body>
+<header class="topbar"><div class="brand"><small>LIU YAO / 六爻納甲</small><h1>六爻<span>玄機引擎</span></h1></div><div class="topnote">100% Browser-side・零後端・排盤資料與斷卦規則分離・每個結論都保留推理鏈</div></header>
+<main class="layout">
+<section class="panel controls">
+  <div class="section-title"><h2>起卦輸入</h2><span class="muted">初爻 → 上爻</span></div>
+  <div class="field"><label>所問之事</label><textarea id="question" rows="2" maxlength="500" placeholder="例如：遺失的手機能否找回？"></textarea></div>
+  <div class="field"><label>問事分類</label><select id="category"></select></div>
+  <div class="field"><label>手動指定用神（可選）</label><select id="manualRelative"><option value="">依分類自動</option><option>父母</option><option>官鬼</option><option>妻財</option><option>兄弟</option><option>子孫</option></select></div>
+  <div class="calendar-grid"><div class="field"><label>起卦日期</label><input id="date" type="date" min="1901-01-01" max="2099-12-31"><span class="hint" id="dayHint"></span></div><div class="field"><label>起卦時間（台北）</label><input id="time" type="time" value="12:00"><span class="hint">用於精確判定節氣交界</span></div></div>
+  <div class="calendar-grid"><div class="field"><label>日柱覆寫</label><input id="dayManual" maxlength="2" placeholder="例 丁巳"><span class="hint">空白＝自動；若採子初換日請覆寫</span></div><div class="field"><label>月建覆寫</label><select id="monthManual"><option value="">自動</option><option>子</option><option>丑</option><option>寅</option><option>卯</option><option>辰</option><option>巳</option><option>午</option><option>未</option><option>申</option><option>酉</option><option>戌</option><option>亥</option></select><span class="hint" id="monthHint"></span></div></div>
+  <div class="section-title"><h3>六爻</h3><span class="muted">6 老陰・7 少陽・8 少陰・9 老陽</span></div><div id="lineInputs" class="line-inputs"></div>
+  <div class="actions"><button id="cast" class="btn primary">排卦＋推理</button><button id="demo" class="btn">隨機</button><button id="reset" class="btn ghost">清空</button></div>
+  <div class="section-title" style="margin-top:22px"><h3>最近紀錄</h3><button id="clearHistory" class="btn ghost" style="padding:5px 8px;font-size:11px">清除</button></div><div id="historyList" class="history-list"></div>
+</section>
+<section class="results">
+  <div id="empty" class="panel empty"><div><div class="symbol">䷀</div><h2>輸入六爻，建立完整推理圖</h2><p>本卦 → 八宮世應 → 納甲 → 六親六神 → 日月空破 → 動變 → 用神 → 吉凶 → 應期候選</p></div></div>
+  <div id="result" hidden>
+    <section class="panel result-block"><div class="hex-head"><div id="hexOriginal" class="hex-card"></div><div class="arrow">→</div><div id="hexChanged" class="hex-card"></div></div><div id="contextCards" class="context-cards"></div><div class="table-wrap"><table id="lineTable"><thead><tr><th>爻位</th><th>六神</th><th>六親／納甲</th><th>本→變</th><th>變爻</th><th>旺衰狀態</th></tr></thead><tbody></tbody></table></div></section>
+    <section class="panel result-block"><div class="analysis-grid"><article class="analysis-card"><h3>用神</h3><div id="useGod"></div></article><article class="analysis-card"><h3>綜合判斷</h3><div id="judgement"></div></article><article class="analysis-card"><h3>應期候選</h3><div id="timing"></div></article></div></section>
+    <section class="panel result-block"><div class="tools"><button id="copy" class="btn">複製摘要</button><button id="export" class="btn">匯出 JSON</button></div><details><summary>查看完整推理資料（Debug / API-ready）</summary><pre id="trace" class="trace"></pre></details></section>
+  </div>
+</section></main>
+<footer class="footer">月建自動值依太陽視黃經計算節氣交界（Asia/Taipei，1901–2099），仍可依所採曆書手動覆寫。變爻六親依《增刪卜易》所述以前卦卦宮五行定。術數結果屬傳統文化規則模擬，工程分數僅供排序與解釋，不應作為醫療、法律、財務等重大決策的唯一依據。</footer>
+<script type="module" src="./src/app.js"></script></body></html>

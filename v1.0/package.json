@@ -1,0 +1,1 @@
+{"name":"liuyao-webapp-v1","version":"1.1.0","private":true,"type":"module","scripts":{"test":"node tests/engine.test.mjs && node tests/integration.test.mjs && node tests/exhaustive-casts.test.mjs && node tests/validate-data.mjs && node tests/static-smoke.mjs","serve":"node scripts/serve.mjs"}}

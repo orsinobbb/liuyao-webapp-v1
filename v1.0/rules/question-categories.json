@@ -1,0 +1,118 @@
+{
+  "version": "0.1.0",
+  "status": "starter",
+  "note": "這是前端預設分類，不視為不可變傳統資料；不同流派與問法可覆寫。",
+  "categories": [
+    {
+      "id": "wealth",
+      "label": "財運／金錢",
+      "primary": [
+        "妻財"
+      ],
+      "secondary": [
+        "世爻",
+        "兄弟",
+        "子孫"
+      ]
+    },
+    {
+      "id": "career",
+      "label": "工作／職位",
+      "primary": [
+        "官鬼"
+      ],
+      "secondary": [
+        "世爻",
+        "父母"
+      ]
+    },
+    {
+      "id": "exam",
+      "label": "考試／證書",
+      "primary": [
+        "父母",
+        "官鬼"
+      ],
+      "secondary": [
+        "世爻"
+      ]
+    },
+    {
+      "id": "documents",
+      "label": "文件／合約",
+      "primary": [
+        "父母"
+      ],
+      "secondary": [
+        "世爻"
+      ]
+    },
+    {
+      "id": "property",
+      "label": "房屋／車輛／器物",
+      "primary": [
+        "父母"
+      ],
+      "secondary": [
+        "世爻"
+      ]
+    },
+    {
+      "id": "lost_item",
+      "label": "失物",
+      "primary": [
+        "依物件分類"
+      ],
+      "secondary": [
+        "世爻",
+        "應爻"
+      ],
+      "requiresContext": true
+    },
+    {
+      "id": "health",
+      "label": "疾病",
+      "primary": [
+        "世爻",
+        "官鬼"
+      ],
+      "secondary": [
+        "子孫"
+      ],
+      "requiresContext": true
+    },
+    {
+      "id": "children",
+      "label": "子女",
+      "primary": [
+        "子孫"
+      ],
+      "secondary": [
+        "世爻"
+      ]
+    },
+    {
+      "id": "relationship",
+      "label": "感情／伴侶",
+      "primary": [
+        "依問卦者與流派設定"
+      ],
+      "secondary": [
+        "世爻",
+        "應爻"
+      ],
+      "requiresContext": true
+    },
+    {
+      "id": "friends",
+      "label": "朋友／同輩／競爭者",
+      "primary": [
+        "兄弟"
+      ],
+      "secondary": [
+        "世爻",
+        "應爻"
+      ]
+    }
+  ]
+}
