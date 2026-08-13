@@ -1,0 +1,8 @@
+{
+  "id": "classic-explainable",
+  "version": "1.2.0",
+  "label": "經典可解釋規則包",
+  "status": "experimental",
+  "sourceIds": ["zengshan-buyi-3", "hko-solar-terms", "engineering-judgement-v1"],
+  "claimBoundary": "本規則包重現傳統術數規則並提供工程化排序，不宣稱具有科學預測效力。"
+}

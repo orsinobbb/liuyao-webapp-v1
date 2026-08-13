@@ -1,24 +1,24 @@
 {
-  "version": "1.0.0",
-  "lineConvention": "所有 code 與爻陣列一律由初爻到上爻（bottom-to-top）",
+  "version": "1.2.0",
+  "appVersion": "1.2.0",
+  "lineConvention": "爻位陣列採由初爻至上爻（bottom-to-top）",
   "files": {
-    "data/elements.json": "五行生剋",
-    "data/heavenly-stems.json": "十天干",
-    "data/earthly-branches.json": "十二地支",
-    "data/trigrams.json": "八卦與三爻碼",
-    "data/najia.json": "八卦納甲（內外卦）",
-    "data/hexagrams.json": "64 卦＋八宮＋世應",
-    "data/eight-palaces.json": "八宮索引",
-    "data/six-relatives.json": "六親生成規則",
-    "data/six-spirits.json": "六神起法",
-    "data/xunkong.json": "六旬空亡",
-    "data/branch-relations.json": "沖合刑害破與三合",
-    "rules/question-categories.json": "可配置的問事→用神候選",
-    "rules/engine-pipeline.json": "前端計算管線"
-  },
-  "appVersion": "1.0.0",
-  "rulesAdded": [
-    "rules/strength-weights.json",
-    "rules/judgement-rules.json"
-  ]
+    "data/elements.json": "五行",
+    "data/heavenly-stems.json": "天干",
+    "data/earthly-branches.json": "地支",
+    "data/trigrams.json": "八卦",
+    "data/najia.json": "納甲",
+    "data/hexagrams.json": "六十四卦",
+    "data/eight-palaces.json": "八宮",
+    "data/six-relatives.json": "六親",
+    "data/six-spirits.json": "六神",
+    "data/xunkong.json": "旬空",
+    "data/branch-relations.json": "地支關係",
+    "rules/question-categories.json": "問事分類與用神",
+    "rules/strength-weights.json": "旺衰權重",
+    "rules/judgement-rules.json": "判斷規則",
+    "rules/engine-pipeline.json": "推理流程",
+    "rules/source-catalog.json": "來源目錄與適用邊界",
+    "rules/rule-pack.json": "規則包版本與來源索引"
+  }
 }

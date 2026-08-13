@@ -1,31 +1,54 @@
 # Architecture
 
 ## 1. Presentation
-`index.html + styles.css + mobile-fixes.css + src/app.js`
+
+`index.html`、`styles.css`、`v1.2.css`：輸入、排盤、判斷、來源追溯、事後回測、歷史與 Debug。
 
 ## 2. Application orchestration
-`src/engine/chart.js` 統一產生一張 immutable-ish chart snapshot。
+
+- `src/app.js`：收集輸入、呼叫 engine、渲染及協調 storage/export。
+- `src/data-loader.js`：載入結構化資料、規則包與來源目錄。
+- `src/storage.js`：最近 30 卦與回饋的本機保存。
+- `src/feedback.js`：回饋正規化、`liuyao-case-v1` 案例紀錄與 CSV。
+- `src/export.js`：摘要、單一案例 JSON、全案例 JSON／CSV。
 
 ## 3. Domain engines
-- calendar.js：日干支、旬空入口、太陽視黃經節氣月建、應期日期掃描
-- validation.js：排盤輸入的集中驗證與正規化
-- hexagram.js：本變卦 code
-- najia.js：內外卦納甲
-- elements.js：五行關係、六親、用神角色
-- sixSpirits.js：六神
-- relations.js：沖合刑害破、回頭生剋
-- strength.js：月日/空破/動靜狀態與可配置分數
-- useGod.js：用神候選與排序
-- judgement.js：可解釋決策規則
-- timing.js：條件觸發型應期候選
+
+```text
+calendar → hexagram → najia/elements/sixSpirits
+         → relations/strength → useGod
+         → judgement → timing → chart snapshot
+```
+
+各 engine 只處理自己的領域規則；`chart.js` 組裝不可變的排盤快照，UI 不直接承擔術數規則。
 
 ## 4. Data / Rules split
-固定資料不塞在 UI；具流派爭議的判定與工程權重放 rules。
 
-- `question-categories.json`：用神六親候選，移除非六親提示詞後交給 `useGod.js` 排序。
-- `strength-weights.json`：月建、日辰、空破與動靜權重。
-- `judgement-rules.json`：綜合判斷權重、結果門檻與說明。
-- `engine-pipeline.json`：固定執行流程的版本化宣告；`chart.js` 仍是實際 orchestrator。
+- `data/`：六十四卦、八宮、納甲、干支、六神、旬空、地支關係等基礎資料。
+- `rules/`：問事分類、旺衰權重、判斷原則與推理流程。
+- `rules/source-catalog.json`：來源層級、連結、支持範圍與限制。
+- `rules/rule-pack.json`：可重現的規則包 ID、版本、狀態與來源集合。
+
+來源追溯證明「規則從哪裡來」，不等同科學有效性或專家共識。
 
 ## 5. Chart JSON contract
-每次排盤輸出完整 snapshot，可直接存 localStorage、匯出 JSON、之後送給其他前端模組或離線 AI。`rules` 欄位記錄 pipeline、問事分類、旺衰權重及判斷規則版本，方便重現結果。
+
+每次排盤輸出完整 snapshot，可存入 localStorage、匯出或交給離線分析。`rules` 記錄 pipeline、問事分類、旺衰權重、判斷規則與規則包版本；`sourceRefs` 記錄來源 ID，讓結果可以重現與稽核。
+
+## 6. Feedback / dataset contract
+
+排盤歷史與回饋使用不同 localStorage key，以 chart ID 關聯。匯出格式為：
+
+```json
+{
+  "schemaVersion": "liuyao-case-v1",
+  "chart": {},
+  "review": null
+}
+```
+
+`review` 可包含實際結果、準確度、解讀幫助度、實際日期、評語與更新時間。沒有回饋時為 `null`，因此原始推理快照不會被事後資料覆寫。
+
+## 7. Deployment flow
+
+GitHub Actions 先執行完整測試，再發布靜態 Pages artifact。根目錄為目前版本；`/v1.0/` 是不可變的舊版備份。

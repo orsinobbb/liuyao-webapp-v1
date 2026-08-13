@@ -49,7 +49,8 @@ export function createChart(input,data){
     createdAt:new Date().toISOString(), question:input.question||'', categoryId:input.categoryId||'', manualRelative:input.manualRelative||'',
     context:{date:input.date,time:input.time,timezone:'Asia/Taipei',dayGanzhi,dayStem,dayBranch,monthBranch,xunStart:xun.xunStart,voidBranches:xun.voidBranches,autoDayGanzhi:autoDay.ganzhi,autoMonthBranch:autoMonth.branch,monthBoundaryHint:autoMonth.boundary,monthBoundaryUtc:autoMonth.boundaryUtc},
     inputLines:[...input.lines],codes,original,changed,lines,useGod,
-    rules:{pipelineVersion:data.enginePipeline?.version||'unversioned',questionCategoriesVersion:data.questionCategories?.version||'unversioned',strengthWeightsVersion:data.strengthWeights?.version||'unversioned',judgementVersion:data.judgementRules?.version||'unversioned'}
+    rules:{pipelineVersion:data.enginePipeline?.version||'unversioned',questionCategoriesVersion:data.questionCategories?.version||'unversioned',strengthWeightsVersion:data.strengthWeights?.version||'unversioned',judgementVersion:data.judgementRules?.version||'unversioned',rulePackId:data.rulePack?.id||'unversioned',rulePackVersion:data.rulePack?.version||'unversioned',sourceCatalogVersion:data.sourceCatalog?.version||'unversioned'},
+    sourceRefs:[...(data.rulePack?.sourceIds||[])]
   };
   chart.judgement=judge(chart,data.branchRelations,data.judgementRules);
   chart.timing=buildTiming(chart,data.branchRelations);

@@ -1,6 +1,20 @@
-export function downloadJson(chart){
-  const blob=new Blob([JSON.stringify(chart,null,2)],{type:'application/json'}); const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob); a.download=`liuyao-${chart.context.date}-${chart.original.name}.json`; a.click(); URL.revokeObjectURL(a.href);
+import {buildCaseRecord,casesToCsv} from './feedback.js';
+
+function download(content,type,filename){
+  const blob=new Blob([content],{type}); const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=filename; a.click(); URL.revokeObjectURL(a.href);
+}
+export function downloadJson(chart,feedback=null){
+  const blob=JSON.stringify(buildCaseRecord(chart,feedback),null,2); const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([blob],{type:'application/json'})); a.download=`liuyao-${chart.context.date}-${chart.original.name}.json`; a.click(); URL.revokeObjectURL(a.href);
+}
+export function downloadCasesJson(charts,feedbackMap){
+  const records=charts.map(chart=>buildCaseRecord(chart,feedbackMap[chart.id]||null));
+  download(JSON.stringify({schemaVersion:'liuyao-dataset-v1',exportedAt:new Date().toISOString(),records},null,2),'application/json','liuyao-cases.json');
+}
+export function downloadCasesCsv(charts,feedbackMap){
+  const records=charts.map(chart=>buildCaseRecord(chart,feedbackMap[chart.id]||null));
+  download('\ufeff'+casesToCsv(records),'text/csv;charset=utf-8','liuyao-cases.csv');
 }
 export async function copySummary(chart){
   const u=chart.useGod.primary;

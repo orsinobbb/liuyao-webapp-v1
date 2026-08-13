@@ -1,19 +1,18 @@
-import fs from 'node:fs';import {createChart} from '../src/engine/chart.js';
-const r=p=>JSON.parse(fs.readFileSync(new URL('../'+p,import.meta.url),'utf8'));
-const data={hexagrams:r('data/hexagrams.json'),najia:r('data/najia.json'),sixSpirits:r('data/six-spirits.json'),xunkong:r('data/xunkong.json'),branchRelations:r('data/branch-relations.json'),strengthWeights:r('rules/strength-weights.json'),questionCategories:r('rules/question-categories.json'),judgementRules:r('rules/judgement-rules.json'),enginePipeline:r('rules/engine-pipeline.json')};
-const c=createChart({question:'測試',categoryId:'wealth',manualRelative:'',date:'2026-08-11',dayGanzhi:'丁巳',monthBranch:'申',lines:[7,7,7,7,7,7]},data);
-if(c.original.name!=='乾')throw Error('全陽本卦應乾');
-if(c.original.palace!=='乾'||c.original.shiLine!==6||c.original.yingLine!==3)throw Error('乾世應錯誤');
-if(c.lines[0].branch!=='子'||c.lines[0].relative!=='子孫')throw Error('乾初爻應子水子孫');
-if(c.context.voidBranches.join('')!=='子丑')throw Error('旬空錯誤');
-if(c.useGod.ruleVersion!==data.questionCategories.version||c.judgement.ruleVersion!==data.judgementRules.version)throw Error('規則版本未接入排盤');
-if(c.rules.pipelineVersion!==data.enginePipeline.version)throw Error('引擎流程版本未寫入輸出');
-for(const [input,message] of [
-  [{date:'2026-02-30',lines:[7,7,7,7,7,7]},'無效日期'],
-  [{date:'2026-08-11',dayGanzhi:'甲甲',lines:[7,7,7,7,7,7]},'無效日柱'],
-  [{date:'2026-08-11',lines:[7,7,7]},'爻數不足']
-]){
+import fs from 'node:fs';
+import {createChart} from '../src/engine/chart.js';
+
+const read=path=>JSON.parse(fs.readFileSync(new URL('../'+path,import.meta.url),'utf8'));
+const data={hexagrams:read('data/hexagrams.json'),najia:read('data/najia.json'),sixSpirits:read('data/six-spirits.json'),xunkong:read('data/xunkong.json'),branchRelations:read('data/branch-relations.json'),strengthWeights:read('rules/strength-weights.json'),questionCategories:read('rules/question-categories.json'),judgementRules:read('rules/judgement-rules.json'),enginePipeline:read('rules/engine-pipeline.json'),sourceCatalog:read('rules/source-catalog.json'),rulePack:read('rules/rule-pack.json')};
+const chart=createChart({question:'測試乾卦',categoryId:'wealth',manualRelative:'',date:'2026-08-11',dayGanzhi:'丁巳',monthBranch:'申',lines:[7,7,7,7,7,7]},data);
+if(chart.original.name!=='乾')throw Error('本卦不是乾');
+if(chart.original.palace!=='乾'||chart.original.shiLine!==6||chart.original.yingLine!==3)throw Error('乾卦世應錯誤');
+if(chart.lines[0].branch!=='子'||chart.lines[0].relative!=='子孫')throw Error('乾卦初爻納甲或六親錯誤');
+if(chart.context.voidBranches.join('')!=='子丑')throw Error('旬空錯誤');
+if(chart.useGod.ruleVersion!==data.questionCategories.version||chart.judgement.ruleVersion!==data.judgementRules.version)throw Error('規則版本未記錄');
+if(chart.rules.pipelineVersion!==data.enginePipeline.version||chart.rules.rulePackVersion!==data.rulePack.version)throw Error('流程或規則包版本未記錄');
+if(!chart.sourceRefs.includes('zengshan-buyi-3'))throw Error('公開來源索引未寫入排盤');
+for(const input of [{date:'2026-02-30',lines:[7,7,7,7,7,7]},{date:'2026-08-11',dayGanzhi:'甲甲',lines:[7,7,7,7,7,7]},{date:'2026-08-11',lines:[7,7,7]}]){
   let rejected=false;try{createChart(input,data)}catch{rejected=true}
-  if(!rejected)throw Error(`${message}應被中央驗證拒絕`);
+  if(!rejected)throw Error('無效輸入未被拒絕');
 }
 console.log('OK integration.test.mjs');

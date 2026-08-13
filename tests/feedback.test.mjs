@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {buildCaseRecord,casesToCsv,normalizeFeedback} from '../src/feedback.js';
+const chart={id:'case-1',createdAt:'2026-08-13T00:00:00.000Z',question:'測試',categoryId:'wealth',original:{displayName:'乾為天'},changed:{displayName:'坤為地'},codes:{movingLines:[1,6]},context:{date:'2026-08-13',dayGanzhi:'己未',monthBranch:'申'},judgement:{tendency:'偏有利'},rules:{rulePackId:'classic-explainable',rulePackVersion:'1.2.0'}};
+const review=normalizeFeedback({outcome:'matched',accuracyScore:'5',usefulnessScore:4,outcomeDate:'2026-08-20',comment:'包含,逗號與"引號"'},'2026-08-21T00:00:00.000Z');
+assert.equal(review.accuracyScore,5);
+assert.equal(buildCaseRecord(chart,review).schemaVersion,'liuyao-case-v1');
+const csv=casesToCsv([buildCaseRecord(chart,review)]);
+assert.match(csv,/"包含,逗號與""引號"""/);
+assert.throws(()=>normalizeFeedback({accuracyScore:6}),/1 到 5/);
+assert.throws(()=>normalizeFeedback({outcomeDate:'2026-02-30'}),/日期格式/);
+console.log('OK feedback.test.mjs');
