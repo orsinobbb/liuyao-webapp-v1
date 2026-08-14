@@ -39,6 +39,20 @@ function categoryOptions(){
 }
 function chip(t){return `<span class="chip">${t}</span>`}
 function strengthClass(b){return b.includes('旺')?'good':b.includes('弱')?'bad':'neutral'}
+function renderHiddenSpirits(c){
+  const box=$('#hiddenSpirits');
+  $('#hiddenSpiritCount').textContent=c.hiddenSpirits.length?`${c.hiddenSpirits.length} 個伏神・來源 ${c.hiddenSourceHexagram}卦`:'本卦六親齊備';
+  if(!c.hiddenSpirits.length){
+    box.innerHTML='<div class="flying-hidden-empty"><b>此卦不需裝伏神</b><span>本卦明爻已具備五類六親，因此沒有伏藏六親與飛伏關係。</span></div>';
+    return;
+  }
+  box.innerHTML=c.hiddenSpirits.map(hidden=>{
+    const flyingLine=c.lines[hidden.line-1];
+    const flyingState=[flyingLine.strength.band,...flyingLine.strength.tags].join('・');
+    const hiddenState=[hidden.strength.band,...hidden.strength.tags].join('・');
+    return `<article class="flying-hidden-card"><div class="flying-hidden-head"><b>${hidden.lineLabel}</b><span>${hidden.flyingRelation.label}</span></div><div class="flying-hidden-pair"><div><small>飛神・明爻</small><strong>${hidden.flying.relative} ${hidden.flying.stem}${hidden.flying.branch}${hidden.flying.element}</strong><em>${flyingState}</em></div><i>→</i><div class="hidden-side"><small>伏神・藏爻</small><strong>${hidden.relative} ${hidden.stem}${hidden.branch}${hidden.element}</strong><em>${hiddenState}</em></div></div><p>伏於${hidden.lineLabel}${hidden.flying.relative}${hidden.flying.branch}${hidden.flying.element}之下，取自${hidden.palaceHexagram}卦同爻位。</p></article>`;
+  }).join('');
+}
 function renderSources(c){
   const box=$('#sources'); box.replaceChildren();
   const sourceMap=new Map((DATA.sourceCatalog?.sources||[]).map(source=>[source.id,source]));
@@ -75,6 +89,7 @@ function renderChart(c){
     const hidden=l.hiddenSpirit?`<div class="hidden-spirit"><b>伏神 ${l.hiddenSpirit.relative}</b> ${l.hiddenSpirit.stem}${l.hiddenSpirit.branch}${l.hiddenSpirit.element}<small>${l.hiddenSpirit.flyingRelation.label}・${l.hiddenSpirit.strength.band}</small></div>`:'';
     return `<tr class="${l.moving?'moving':''}"><td>${l.lineLabel}<br><b>${role}</b></td><td>${l.spirit}</td><td><b>${l.relative}</b><br>${l.stem}${l.branch}${l.element}${hidden}</td><td class="yao">${l.glyph}${l.moving?'<i>→</i>'+l.changedGlyph:''}</td><td>${change}</td><td>${state}<small class="score">${l.strength.score>0?'+':''}${l.strength.score}</small></td></tr>`
   }).join('');
+  renderHiddenSpirits(c);
   const u=c.useGod.primary;
   $('#useGod').innerHTML=u?`<strong>${u.lineLabel}・${u.isHidden?'伏神 ':''}${u.relative}${u.branch}${u.element}</strong><span>${u.strength.band} ${u.moving?'・動爻':''}${u.isHidden?`・${u.flyingRelation.label}`:''}</span><small>候選 ${c.useGod.candidates.length} 爻；以顯伏、動靜、世位與工程旺衰分數排序。</small>`:`<strong>尚未指定</strong><span>此問事類型需要手動選擇用神六親。</span>`;
   $('#judgement').innerHTML=`<div class="tendency">${c.judgement.tendency}</div><div class="confidence">信心：${c.judgement.confidence} ${c.judgement.rawScore!==undefined?`・趨勢分 ${c.judgement.rawScore}`:''}</div><ol>${c.judgement.reasons.map(x=>`<li>${x}</li>`).join('')}</ol>`;
