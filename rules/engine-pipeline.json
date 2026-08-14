@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "pipeline": [
     {
       "step": 1,
@@ -65,6 +65,19 @@
     },
     {
       "step": 6,
+      "id": "hiddenSpirits",
+      "input": [
+        "palace",
+        "sixRelatives",
+        "palaceBaseHexagram"
+      ],
+      "output": [
+        "hiddenSpirits",
+        "flyingHiddenRelations"
+      ]
+    },
+    {
+      "step": 7,
       "id": "sixSpirits",
       "input": [
         "dayStem"
@@ -74,7 +87,7 @@
       ]
     },
     {
-      "step": 7,
+      "step": 8,
       "id": "relations",
       "input": [
         "monthBranch",
@@ -87,7 +100,7 @@
       ]
     },
     {
-      "step": 8,
+      "step": 9,
       "id": "useGod",
       "input": [
         "questionCategory",
@@ -98,7 +111,7 @@
       ]
     },
     {
-      "step": 9,
+      "step": 10,
       "id": "judgement",
       "input": [
         "chart",
@@ -110,7 +123,7 @@
       ]
     },
     {
-      "step": 10,
+      "step": 11,
       "id": "timing",
       "input": [
         "reasoningGraph"

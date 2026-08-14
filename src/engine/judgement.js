@@ -20,6 +20,9 @@ export function judge(chart, relationsData, rulesData={}){
   if(use.strength.tags.includes('空亡')){tendency+=weights.void;reasons.push('用神逢旬空：偏向尚未落實、暫虛或需待出空；不是單獨判凶。')}
   if(use.strength.tags.includes('月破')){tendency+=weights.monthBreak;reasons.push('用神月破：當月環境對它不利，需看是否得日、動變或後續填實。')}
   if(use.moving){tendency+=weights.moving;reasons.push('用神發動：事情核心正在變化，需重看變爻。')}
+  if(use.isHidden){
+    reasons.push(`用神為伏神，藏於${use.lineLabel}${use.flying.relative}${use.flying.branch}${use.flying.element}之下；${use.flyingRelation.label}。伏藏表示未直接顯現，仍須合看日月旺衰與飛神制化。`);
+  }
 
   if(shi){
     const r=elementRelation(use.element,shi.element);
@@ -42,7 +45,7 @@ export function judge(chart, relationsData, rulesData={}){
   }
 
   const resultLabel=tendencyLabel(tendency,thresholds);
-  const confidence=chart.useGod.candidates.length===1?'high':chart.useGod.candidates.length>1?'medium':'low';
+  const confidence=use.isHidden?'medium':chart.useGod.candidates.length===1?'high':chart.useGod.candidates.length>1?'medium':'low';
   warnings.push('此結果是可解釋規則引擎的傳統術數模擬，不是科學預測；工程分數只用於排序。');
   return {status:'已判',tendency:resultLabel,rawScore:Number(tendency.toFixed(1)),confidence,reasons,warnings,roles,shiSummary:shi?`${shi.relative}${shi.branch}${shi.element} ${shi.strength.band}`:'',yingSummary:ying?`${ying.relative}${ying.branch}${ying.element} ${ying.strength.band}`:'',ruleVersion:rulesData.version||'unversioned'};
 }

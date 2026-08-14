@@ -1,0 +1,13 @@
+.hidden-spirit {
+  margin-top: 7px;
+  padding: 6px 8px;
+  border-left: 2px solid var(--gold);
+  background: rgba(232, 200, 121, .06);
+  color: #d8c99c;
+  font-size: 11px;
+}
+.hidden-spirit small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+}

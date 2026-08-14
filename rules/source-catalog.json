@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "disclaimer": "來源用於追溯規則與曆法方法，不代表六爻判斷已獲科學驗證。網路案例只能作為待回測資料。",
   "sources": [
     {
@@ -26,7 +26,7 @@
       "type": "internal-engineering-rule",
       "authority": "工程化規則",
       "url": "./rules/judgement-rules.json",
-      "supports": ["旺衰與生剋條件的可解釋排序", "綜合趨勢分數與門檻"],
+      "supports": ["旺衰與生剋條件的可解釋排序", "伏神裝配與飛伏生剋的工程實作", "綜合趨勢分數與門檻"],
       "notes": "分數只用於排序與解釋，不是準確率或機率。"
     }
   ]

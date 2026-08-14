@@ -1,6 +1,6 @@
 {
   "id": "classic-explainable",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "label": "經典可解釋規則包",
   "status": "experimental",
   "sourceIds": ["zengshan-buyi-3", "hko-solar-terms", "engineering-judgement-v1"],

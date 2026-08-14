@@ -10,6 +10,7 @@ import { judge } from './judgement.js';
 import { buildTiming } from './timing.js';
 import { ganzhiDayFromGregorian, monthBranchFromDateTime, xunVoidFromGanzhi } from './calendar.js';
 import { validateChartInput } from './validation.js';
+import { buildHiddenSpirits } from './hiddenSpirits.js';
 
 export function createChart(input,data){
   input=validateChartInput(input,data);
@@ -27,7 +28,7 @@ export function createChart(input,data){
   const xun=xunVoidFromGanzhi(dayGanzhi,data.xunkong);
   const spirits=buildSixSpirits(dayStem,data.sixSpirits);
 
-  const lines=originalNajia.map((n,i)=>{
+  const visibleLines=originalNajia.map((n,i)=>{
     const value=input.lines[i]; const moving=VALUE_META[value].moving;
     const changedN=changedNajia[i];
     const relative=relativeFromPalace(original.palaceElement,n.element);
@@ -43,12 +44,17 @@ export function createChart(input,data){
     const strength=assessStrength(base,{monthBranch,dayBranch,voidBranches:xun.voidBranches,relationsData:data.branchRelations,weightsData:data.strengthWeights});
     return {...base,strength,returnRelation:moving?returnRelation(n.element,changedN.element):''};
   });
-  const useGod=resolveUseGod(lines,{categoryId:input.categoryId,manualRelative:input.manualRelative,questionCategories:data.questionCategories});
+  const strengthContext={monthBranch,dayBranch,voidBranches:xun.voidBranches,relationsData:data.branchRelations,weightsData:data.strengthWeights};
+  const hiddenResult=buildHiddenSpirits(original,visibleLines,{hexagrams:data.hexagrams,najia:data.najia,strengthContext});
+  const hiddenByLine=new Map(hiddenResult.hiddenSpirits.map(item=>[item.line,item]));
+  const lines=visibleLines.map(line=>({...line,hiddenSpirit:hiddenByLine.get(line.line)||null}));
+  const useGodLines=lines.flatMap(line=>line.hiddenSpirit?[line,line.hiddenSpirit]:[line]);
+  const useGod=resolveUseGod(useGodLines,{categoryId:input.categoryId,manualRelative:input.manualRelative,questionCategories:data.questionCategories});
   const chart={
     id:globalThis.crypto?.randomUUID?globalThis.crypto.randomUUID():`${Date.now()}`,
     createdAt:new Date().toISOString(), question:input.question||'', categoryId:input.categoryId||'', manualRelative:input.manualRelative||'',
     context:{date:input.date,time:input.time,timezone:'Asia/Taipei',dayGanzhi,dayStem,dayBranch,monthBranch,xunStart:xun.xunStart,voidBranches:xun.voidBranches,autoDayGanzhi:autoDay.ganzhi,autoMonthBranch:autoMonth.branch,monthBoundaryHint:autoMonth.boundary,monthBoundaryUtc:autoMonth.boundaryUtc},
-    inputLines:[...input.lines],codes,original,changed,lines,useGod,
+    inputLines:[...input.lines],codes,original,changed,lines,hiddenSpirits:hiddenResult.hiddenSpirits,hiddenSourceHexagram:hiddenResult.palaceHexagram.name,useGod,
     rules:{pipelineVersion:data.enginePipeline?.version||'unversioned',questionCategoriesVersion:data.questionCategories?.version||'unversioned',strengthWeightsVersion:data.strengthWeights?.version||'unversioned',judgementVersion:data.judgementRules?.version||'unversioned',rulePackId:data.rulePack?.id||'unversioned',rulePackVersion:data.rulePack?.version||'unversioned',sourceCatalogVersion:data.sourceCatalog?.version||'unversioned'},
     sourceRefs:[...(data.rulePack?.sourceIds||[])]
   };

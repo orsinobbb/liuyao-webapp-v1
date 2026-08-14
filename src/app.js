@@ -72,10 +72,11 @@ function renderChart(c){
     const role=[l.isShi?'世':'',l.isYing?'應':''].filter(Boolean).join(' ');
     const state=[l.strength.band,...l.strength.tags].map(x=>`<span class="state ${strengthClass(x)}">${x}</span>`).join('');
     const change=l.moving?`${l.changed.relative}${l.changed.branch}${l.changed.element}<br><small>${l.returnRelation}</small>`:'—';
-    return `<tr class="${l.moving?'moving':''}"><td>${l.lineLabel}<br><b>${role}</b></td><td>${l.spirit}</td><td><b>${l.relative}</b><br>${l.stem}${l.branch}${l.element}</td><td class="yao">${l.glyph}${l.moving?'<i>→</i>'+l.changedGlyph:''}</td><td>${change}</td><td>${state}<small class="score">${l.strength.score>0?'+':''}${l.strength.score}</small></td></tr>`
+    const hidden=l.hiddenSpirit?`<div class="hidden-spirit"><b>伏神 ${l.hiddenSpirit.relative}</b> ${l.hiddenSpirit.stem}${l.hiddenSpirit.branch}${l.hiddenSpirit.element}<small>${l.hiddenSpirit.flyingRelation.label}・${l.hiddenSpirit.strength.band}</small></div>`:'';
+    return `<tr class="${l.moving?'moving':''}"><td>${l.lineLabel}<br><b>${role}</b></td><td>${l.spirit}</td><td><b>${l.relative}</b><br>${l.stem}${l.branch}${l.element}${hidden}</td><td class="yao">${l.glyph}${l.moving?'<i>→</i>'+l.changedGlyph:''}</td><td>${change}</td><td>${state}<small class="score">${l.strength.score>0?'+':''}${l.strength.score}</small></td></tr>`
   }).join('');
   const u=c.useGod.primary;
-  $('#useGod').innerHTML=u?`<strong>${u.lineLabel}・${u.relative}${u.branch}${u.element}</strong><span>${u.strength.band} ${u.moving?'・動爻':''}</span><small>候選 ${c.useGod.candidates.length} 爻；以動靜、世位與工程旺衰分數排序。</small>`:`<strong>尚未指定</strong><span>此問事類型需要手動選擇用神六親。</span>`;
+  $('#useGod').innerHTML=u?`<strong>${u.lineLabel}・${u.isHidden?'伏神 ':''}${u.relative}${u.branch}${u.element}</strong><span>${u.strength.band} ${u.moving?'・動爻':''}${u.isHidden?`・${u.flyingRelation.label}`:''}</span><small>候選 ${c.useGod.candidates.length} 爻；以顯伏、動靜、世位與工程旺衰分數排序。</small>`:`<strong>尚未指定</strong><span>此問事類型需要手動選擇用神六親。</span>`;
   $('#judgement').innerHTML=`<div class="tendency">${c.judgement.tendency}</div><div class="confidence">信心：${c.judgement.confidence} ${c.judgement.rawScore!==undefined?`・趨勢分 ${c.judgement.rawScore}`:''}</div><ol>${c.judgement.reasons.map(x=>`<li>${x}</li>`).join('')}</ol>`;
   $('#timing').innerHTML=c.timing.length?c.timing.map(t=>`<div class="timing-row"><b>${t.branch}</b><span>${t.reason}</span><small>${t.nextDates.map(d=>`${d.date} ${d.ganzhi}`).join('　')}</small></div>`).join(''):'<p>用神未明，暫不產生應期候選。</p>';
   $('#trace').textContent=JSON.stringify(c,null,2);

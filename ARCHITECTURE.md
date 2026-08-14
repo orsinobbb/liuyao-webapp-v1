@@ -2,7 +2,7 @@
 
 ## 1. Presentation
 
-`index.html`、`styles.css`、`v1.2.css`：輸入、排盤、判斷、來源追溯、事後回測、歷史與 Debug。
+`index.html`、`styles.css`、`v1.2.css`、`v1.3.css`：輸入、排盤、判斷、伏神顯示、來源追溯、事後回測、歷史與 Debug。
 
 ## 2. Application orchestration
 
@@ -16,7 +16,7 @@
 
 ```text
 calendar → hexagram → najia/elements/sixSpirits
-         → relations/strength → useGod
+         → hiddenSpirits → relations/strength → useGod
          → judgement → timing → chart snapshot
 ```
 
