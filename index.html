@@ -1,11 +1,13 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#07100f"><title>六爻玄機引擎</title><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./mobile-fixes.css"><link rel="stylesheet" href="./v1.2.css"><link rel="stylesheet" href="./v1.3.css"></head><body>
-<header class="topbar"><div class="brand"><small>LIU YAO / 六爻納甲・v1.3</small><h1>六爻<span>玄機引擎</span></h1></div><div class="topnote">100% Browser-side・零後端・來源可追溯・案例可回測・每個結論都保留推理鏈</div></header>
+<header class="topbar"><div class="brand"><small>LIU YAO / 六爻納甲・v1.4</small><h1>六爻<span>玄機引擎</span></h1></div><div class="topnote">100% Browser-side・零後端・來源可追溯・案例可回測・每個結論都保留推理鏈</div></header>
 <main class="layout">
 <section class="panel controls">
   <div class="section-title"><h2>起卦輸入</h2><span class="muted">初爻 → 上爻</span></div>
   <div class="field"><label>所問之事</label><textarea id="question" rows="2" maxlength="500" placeholder="例如：遺失的手機能否找回？"></textarea></div>
   <div class="field"><label>問事分類</label><select id="category"></select></div>
   <div class="field"><label>手動指定用神（可選）</label><select id="manualRelative"><option value="">依分類自動</option><option>父母</option><option>官鬼</option><option>妻財</option><option>兄弟</option><option>子孫</option></select></div>
+  <div id="categoryRule" class="category-rule"></div>
+  <details class="use-god-guide"><summary>查看完整問事取用表</summary><div class="rule-table-wrap"><table><thead><tr><th>問事情境</th><th>主用神</th><th>輔助觀察</th><th>必要追問</th></tr></thead><tbody id="useGodRuleTable"></tbody></table></div><p>取用表是可檢查的規則起點；具體問句、人物身分及流派差異仍可用手動用神覆寫。</p></details>
   <div class="calendar-grid"><div class="field"><label>起卦日期</label><input id="date" type="date" min="1901-01-01" max="2099-12-31"><span class="hint" id="dayHint"></span></div><div class="field"><label>起卦時間（台北）</label><input id="time" type="time" value="12:00"><span class="hint">用於精確判定節氣交界</span></div></div>
   <div class="calendar-grid"><div class="field"><label>日柱覆寫</label><input id="dayManual" maxlength="2" placeholder="例 丁巳"><span class="hint">空白＝自動；若採子初換日請覆寫</span></div><div class="field"><label>月建覆寫</label><select id="monthManual"><option value="">自動</option><option>子</option><option>丑</option><option>寅</option><option>卯</option><option>辰</option><option>巳</option><option>午</option><option>未</option><option>申</option><option>酉</option><option>戌</option><option>亥</option></select><span class="hint" id="monthHint"></span></div></div>
   <div class="section-title"><h3>六爻</h3><span class="muted">6 老陰・7 少陽・8 少陰・9 老陽</span></div><div id="lineInputs" class="line-inputs"></div>

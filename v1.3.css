@@ -53,3 +53,33 @@
 .flying-hidden-empty {display:grid;gap:5px;color:var(--muted)}
 .flying-hidden-empty b {color:var(--text)}
 @media(max-width:600px){.flying-hidden-pair{align-items:stretch}.flying-hidden-pair > i{align-self:center}.flying-hidden-grid{grid-template-columns:1fr}}
+.category-rule,.use-god-guide {
+  border: 1px solid rgba(232, 200, 121, .3);
+  border-radius: 13px;
+  background: rgba(232, 200, 121, .055);
+  padding: 11px 12px;
+  margin-bottom: 13px;
+}
+.category-rule b,.category-rule span,.category-rule small {display:block}
+.category-rule b {color:var(--gold);font-size:13px}
+.category-rule span {margin-top:5px;font-size:11px;line-height:1.55}
+.category-rule small {margin-top:5px;color:var(--muted);line-height:1.55}
+.use-god-guide summary {cursor:pointer;color:var(--gold);font-size:12px}
+.use-god-guide p {color:var(--muted);font-size:10px;line-height:1.6;margin:9px 0 0}
+.rule-table-wrap {overflow:auto;margin-top:10px}
+.rule-table-wrap table {min-width:780px}
+.rule-table-wrap td {vertical-align:top;font-size:11px;line-height:1.55}
+.rule-table-wrap td:first-child {min-width:145px}
+.rule-table-wrap td small {display:block;color:var(--muted);margin-top:4px}
+.use-god-context {border-top:1px dashed var(--line);margin-top:11px;padding-top:8px}
+.analysis-card .use-god-context b {display:block;color:var(--gold);font-size:11px;margin-top:6px}
+.analysis-card .use-god-context span {font-size:11px;line-height:1.5}
+@media(max-width:600px){
+  .rule-table-wrap{overflow:visible}
+  .rule-table-wrap table,.rule-table-wrap tbody{display:block;min-width:0}
+  .rule-table-wrap thead{display:none}
+  .rule-table-wrap tr{display:grid;border:1px solid var(--line);border-radius:11px;padding:7px;margin-bottom:9px;background:rgba(7,16,15,.45)}
+  .rule-table-wrap td,.rule-table-wrap td:first-child{display:grid;grid-template-columns:68px 1fr;gap:8px;min-width:0;border:0;padding:6px;font-size:11px}
+  .rule-table-wrap td::before{content:attr(data-label);color:var(--gold);font-size:10px}
+  .rule-table-wrap td small{grid-column:2}
+}

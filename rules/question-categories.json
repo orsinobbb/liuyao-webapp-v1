@@ -1,118 +1,35 @@
 {
-  "version": "0.1.0",
-  "status": "starter",
-  "note": "這是前端預設分類，不視為不可變傳統資料；不同流派與問法可覆寫。",
+  "version": "1.0.0",
+  "status": "expanded",
+  "note": "取用表用於協助定用神，不取代對具體問句、人物身分與流派差異的判讀。主用神只取一個角色，其他角色列為輔助觀察。",
   "categories": [
-    {
-      "id": "wealth",
-      "label": "財運／金錢",
-      "primary": [
-        "妻財"
-      ],
-      "secondary": [
-        "世爻",
-        "兄弟",
-        "子孫"
-      ]
-    },
-    {
-      "id": "career",
-      "label": "工作／職位",
-      "primary": [
-        "官鬼"
-      ],
-      "secondary": [
-        "世爻",
-        "父母"
-      ]
-    },
-    {
-      "id": "exam",
-      "label": "考試／證書",
-      "primary": [
-        "父母",
-        "官鬼"
-      ],
-      "secondary": [
-        "世爻"
-      ]
-    },
-    {
-      "id": "documents",
-      "label": "文件／合約",
-      "primary": [
-        "父母"
-      ],
-      "secondary": [
-        "世爻"
-      ]
-    },
-    {
-      "id": "property",
-      "label": "房屋／車輛／器物",
-      "primary": [
-        "父母"
-      ],
-      "secondary": [
-        "世爻"
-      ]
-    },
-    {
-      "id": "lost_item",
-      "label": "失物",
-      "primary": [
-        "依物件分類"
-      ],
-      "secondary": [
-        "世爻",
-        "應爻"
-      ],
-      "requiresContext": true
-    },
-    {
-      "id": "health",
-      "label": "疾病",
-      "primary": [
-        "世爻",
-        "官鬼"
-      ],
-      "secondary": [
-        "子孫"
-      ],
-      "requiresContext": true
-    },
-    {
-      "id": "children",
-      "label": "子女",
-      "primary": [
-        "子孫"
-      ],
-      "secondary": [
-        "世爻"
-      ]
-    },
-    {
-      "id": "relationship",
-      "label": "感情／伴侶",
-      "primary": [
-        "依問卦者與流派設定"
-      ],
-      "secondary": [
-        "世爻",
-        "應爻"
-      ],
-      "requiresContext": true
-    },
-    {
-      "id": "friends",
-      "label": "朋友／同輩／競爭者",
-      "primary": [
-        "兄弟"
-      ],
-      "secondary": [
-        "世爻",
-        "應爻"
-      ]
-    }
+    {"id":"wealth","label":"財運／收入","primary":{"selector":"妻財","meaning":"金錢、收入與可支配資源"},"observe":[{"selector":"世爻","meaning":"本人承接財氣的能力"},{"selector":"兄弟","meaning":"競爭、分財與耗財"},{"selector":"子孫","meaning":"生財來源"}],"questions":["所問是收入、支出，還是能否得款？"]},
+    {"id":"investment","label":"投資／股票／獲利","primary":{"selector":"妻財","meaning":"本金回報與實際收益"},"observe":[{"selector":"世爻","meaning":"本人風險承受力"},{"selector":"兄弟","meaning":"耗損與競爭"},{"selector":"子孫","meaning":"獲利來源"}],"questions":["問短期價格、最終獲利，還是資金安全？"],"caution":"卦象不構成投資建議。"},
+    {"id":"debt","label":"借貸／債務／收款","primary":{"selector":"妻財","meaning":"款項與債權能否落實"},"observe":[{"selector":"世爻","meaning":"我方處境"},{"selector":"應爻","meaning":"對方履約狀態"},{"selector":"兄弟","meaning":"阻隔與耗財"}],"questions":["你是借出、借入，還是催收款項？"]},
+    {"id":"business","label":"生意／交易／合作","primary":{"selector":"妻財","meaning":"交易收益與貨款"},"observe":[{"selector":"世爻","meaning":"我方"},{"selector":"應爻","meaning":"客戶或合作方"},{"selector":"子孫","meaning":"產品與生財來源"},{"selector":"兄弟","meaning":"競爭與分利"}],"questions":["問成交、利潤、合作關係，還是對方信用？"]},
+    {"id":"career","label":"工作／職位","primary":{"selector":"官鬼","meaning":"職位、職責與工作壓力"},"observe":[{"selector":"世爻","meaning":"本人勝任與承擔能力"},{"selector":"父母","meaning":"公司、制度與合約"}],"questions":["問現職發展、去留，還是工作結果？"]},
+    {"id":"job_search","label":"求職／面試／錄取","primary":{"selector":"官鬼","meaning":"職缺與職位"},"observe":[{"selector":"世爻","meaning":"求職者狀態"},{"selector":"父母","meaning":"履歷、通知與聘書"},{"selector":"應爻","meaning":"招募方"}],"questions":["是否已有特定公司或職缺？"]},
+    {"id":"promotion","label":"升遷／任用／考績","primary":{"selector":"官鬼","meaning":"官位、職級與任用"},"observe":[{"selector":"世爻","meaning":"本人能否承職"},{"selector":"父母","meaning":"任命文書與制度"}],"questions":["問升遷機會、公布時間，還是任用結果？"]},
+    {"id":"exam","label":"考試／證照／榜單","primary":{"selector":"父母","meaning":"試卷、成績、證書與榜文"},"observe":[{"selector":"官鬼","meaning":"名次、功名與錄取資格"},{"selector":"世爻","meaning":"考生狀態"},{"selector":"子孫","meaning":"剋官，需辨壓力解除或不利功名"}],"questions":["重點是分數、證書，還是錄取名次？"]},
+    {"id":"documents","label":"文件／合約／申請","primary":{"selector":"父母","meaning":"文書、契約、證明與申請資料"},"observe":[{"selector":"世爻","meaning":"申請人或我方"},{"selector":"應爻","meaning":"承辦或締約對方"}],"questions":["問簽署、核准、真偽，還是取得時間？"]},
+    {"id":"property","label":"房屋／土地／車輛／器物","primary":{"selector":"父母","meaning":"房產、車輛與承載庇護之物"},"observe":[{"selector":"妻財","meaning":"價金與價值"},{"selector":"世爻","meaning":"我方"},{"selector":"應爻","meaning":"交易對方"}],"questions":["問買賣、品質、居住，還是所有權？"]},
+    {"id":"lost_item","label":"失物／尋物","primary":null,"observe":[{"selector":"世爻","meaning":"失主"},{"selector":"應爻","meaning":"外部環境或他方"}],"questions":["遺失的是金錢、文件、衣物、工具、寵物或其他物件？"],"caution":"需先按物件性質指定父母、妻財、子孫等用神。"},
+    {"id":"health_self","label":"疾病／健康（自己）","primary":{"selector":"世爻","meaning":"本人身體與病情承受狀態"},"observe":[{"selector":"官鬼","meaning":"疾病、病因與壓力"},{"selector":"子孫","meaning":"醫藥、治療與制病力量"}],"questions":["問病因、病勢、治療效果，還是康復時間？"],"caution":"卦象不能替代醫療診斷與治療。"},
+    {"id":"health_other","label":"疾病／健康（代占）","primary":null,"observe":[{"selector":"官鬼","meaning":"疾病與病因"},{"selector":"子孫","meaning":"醫藥與治療"}],"questions":["病人與你是父母、子女、伴侶、兄弟朋友或其他關係？"],"caution":"先依病人身分手動指定六親；不能替代醫療。"},
+    {"id":"children","label":"子女／晚輩","primary":{"selector":"子孫","meaning":"子女、晚輩與其發展"},"observe":[{"selector":"世爻","meaning":"問卦者"},{"selector":"官鬼","meaning":"壓力、疾病或約束"}],"questions":["問健康、學業、工作，還是彼此關係？"]},
+    {"id":"pregnancy","label":"懷孕／生產","primary":{"selector":"子孫","meaning":"胎兒與生育結果"},"observe":[{"selector":"世爻","meaning":"孕者狀態"},{"selector":"官鬼","meaning":"疾病、風險與阻礙"},{"selector":"父母","meaning":"醫療文件與照護條件"}],"questions":["問能否懷孕、胎況，還是生產時機？"],"caution":"必須以產檢與醫囑為準。"},
+    {"id":"relationship_male","label":"感情／婚姻（男問女）","primary":{"selector":"妻財","meaning":"女方或伴侶"},"observe":[{"selector":"世爻","meaning":"男方本人"},{"selector":"應爻","meaning":"對方位置與互動"},{"selector":"兄弟","meaning":"競爭或阻隔"}],"questions":["問交往、復合、結婚，還是關係走向？"]},
+    {"id":"relationship_female","label":"感情／婚姻（女問男）","primary":{"selector":"官鬼","meaning":"男方或伴侶"},"observe":[{"selector":"世爻","meaning":"女方本人"},{"selector":"應爻","meaning":"對方位置與互動"},{"selector":"子孫","meaning":"對官鬼的制化"}],"questions":["問交往、復合、結婚，還是關係走向？"]},
+    {"id":"relationship_general","label":"感情／關係（其他情境）","primary":{"selector":"應爻","meaning":"所問對象與關係另一方"},"observe":[{"selector":"世爻","meaning":"問卦者"}],"questions":["雙方身分及關係為何？是否採特定流派的配偶取用法？"],"caution":"不明身分時先以世應看雙方，再視需要手動指定六親。"},
+    {"id":"parents","label":"父母／長輩／師長","primary":{"selector":"父母","meaning":"父母、長輩、師長與庇護者"},"observe":[{"selector":"世爻","meaning":"問卦者"},{"selector":"官鬼","meaning":"疾病、壓力或職務"}],"questions":["問健康、平安、關係，還是具體事件？"]},
+    {"id":"siblings","label":"兄弟／朋友／同事／競爭者","primary":{"selector":"兄弟","meaning":"同輩、朋友、同事或競爭者"},"observe":[{"selector":"世爻","meaning":"問卦者"},{"selector":"應爻","meaning":"對方與互動"}],"questions":["對方是合作關係、競爭關係，還是單純問其近況？"]},
+    {"id":"lawsuit","label":"官司／訴訟／爭議","primary":{"selector":"官鬼","meaning":"官非、訴訟壓力與司法程序"},"observe":[{"selector":"世爻","meaning":"我方"},{"selector":"應爻","meaning":"對方"},{"selector":"父母","meaning":"證據、文書與判決文件"},{"selector":"子孫","meaning":"解厄與制官力量"}],"questions":["你是原告、被告，還是問調解與結果？"],"caution":"不構成法律意見。"},
+    {"id":"travel","label":"出行／旅遊／移動","primary":{"selector":"世爻","meaning":"出行者本人與行程承受狀態"},"observe":[{"selector":"應爻","meaning":"目的地與外部環境"},{"selector":"父母","meaning":"交通工具、證件與行程"},{"selector":"官鬼","meaning":"阻礙與風險"}],"questions":["問能否成行、安全、順利，還是抵達時間？"]},
+    {"id":"traveler","label":"行人／等人歸來","primary":{"selector":"應爻","meaning":"在外之人或所等之人"},"observe":[{"selector":"世爻","meaning":"等待者"},{"selector":"父母","meaning":"消息與交通"}],"questions":["對方與你的身分關係為何？是否要改按其六親取用？"]},
+    {"id":"missing_person","label":"尋人／失聯","primary":{"selector":"應爻","meaning":"失聯或待尋之人"},"observe":[{"selector":"世爻","meaning":"尋找者"},{"selector":"父母","meaning":"消息、聯絡與交通線索"},{"selector":"官鬼","meaning":"風險與阻礙"}],"questions":["失聯者與你的關係、失聯多久、最後地點為何？"],"caution":"緊急失聯應立即聯絡警方或救援單位。"},
+    {"id":"pet","label":"寵物／動物","primary":{"selector":"子孫","meaning":"寵物、家畜與動物"},"observe":[{"selector":"世爻","meaning":"飼主"},{"selector":"官鬼","meaning":"疾病與危險"},{"selector":"應爻","meaning":"外部位置"}],"questions":["問健康、走失、繁殖，還是買賣？"]},
+    {"id":"weather","label":"天氣／雨晴","primary":{"selector":"父母","meaning":"雨、雲與濕象"},"observe":[{"selector":"子孫","meaning":"日照、晴朗與散雲"},{"selector":"官鬼","meaning":"雷電、陰沉與災害風險"}],"questions":["所問地點、日期與關注的是雨、風、晴或災害？"],"caution":"應以官方氣象資訊作安全決策。"},
+    {"id":"agriculture","label":"農作／收成／養殖","primary":{"selector":"子孫","meaning":"作物、牲畜與產出"},"observe":[{"selector":"妻財","meaning":"收成價值與收益"},{"selector":"父母","meaning":"土地、雨水與設施"},{"selector":"官鬼","meaning":"病蟲害與災損"}],"questions":["問生長、產量、價格，還是災害？"]},
+    {"id":"competition","label":"比賽／競標／競爭","primary":{"selector":"世爻","meaning":"我方表現與勝任能力"},"observe":[{"selector":"應爻","meaning":"對手或評審方"},{"selector":"兄弟","meaning":"競爭者"},{"selector":"官鬼","meaning":"名次、規則與壓力"}],"questions":["問勝負、排名、是否入選，還是競爭強弱？"]}
   ]
 }

@@ -36,6 +36,16 @@ function syncCalendarHints(){
 function categoryOptions(){
   const select=$('#category'); select.replaceChildren();
   DATA.questionCategories.categories.forEach(item=>{const option=document.createElement('option');option.value=item.id;option.textContent=item.label;select.appendChild(option)});
+  renderUseGodGuide();
+}
+function selectorText(rule){return rule?.selector?`${rule.selector}・${rule.meaning}`:'需依情境手動指定'}
+function renderUseGodGuide(){
+  const categories=DATA.questionCategories.categories;
+  const selected=categories.find(item=>item.id===$('#category').value)||categories[0];
+  const observations=(selected.observe||[]).map(rule=>`${rule.selector}（${rule.meaning}）`).join('、')||'無';
+  const questions=(selected.questions||[]).join('、')||'無';
+  $('#categoryRule').innerHTML=`<b>主用神：${selectorText(selected.primary)}</b><span>輔助：${observations}</span><small>排卦前確認：${questions}${selected.caution?`｜${selected.caution}`:''}</small>`;
+  $('#useGodRuleTable').innerHTML=categories.map(item=>`<tr><td data-label="問事情境"><b>${item.label}</b>${item.caution?`<small>${item.caution}</small>`:''}</td><td data-label="主用神">${selectorText(item.primary)}</td><td data-label="輔助觀察">${(item.observe||[]).map(rule=>`${rule.selector}・${rule.meaning}`).join('<br>')||'—'}</td><td data-label="必要追問">${(item.questions||[]).join('<br>')||'—'}</td></tr>`).join('');
 }
 function chip(t){return `<span class="chip">${t}</span>`}
 function strengthClass(b){return b.includes('旺')?'good':b.includes('弱')?'bad':'neutral'}
@@ -91,7 +101,9 @@ function renderChart(c){
   }).join('');
   renderHiddenSpirits(c);
   const u=c.useGod.primary;
-  $('#useGod').innerHTML=u?`<strong>${u.lineLabel}・${u.isHidden?'伏神 ':''}${u.relative}${u.branch}${u.element}</strong><span>${u.strength.band} ${u.moving?'・動爻':''}${u.isHidden?`・${u.flyingRelation.label}`:''}</span><small>候選 ${c.useGod.candidates.length} 爻；以顯伏、動靜、世位與工程旺衰分數排序。</small>`:`<strong>尚未指定</strong><span>此問事類型需要手動選擇用神六親。</span>`;
+  const rule=c.useGod.primaryRule;
+  const observed=c.useGod.observations.map(item=>`${item.selector}：${item.meaning}`).join('；');
+  $('#useGod').innerHTML=(u?`<strong>${u.lineLabel}・${u.isHidden?'伏神 ':''}${u.relative}${u.branch}${u.element}</strong><span>${u.strength.band} ${u.moving?'・動爻':''}${u.isHidden?`・${u.flyingRelation.label}`:''}</span><small>主取 ${rule.selector}：${rule.meaning}；候選 ${c.useGod.candidates.length} 爻。</small>`:`<strong>尚未指定</strong><span>此情境需先回答追問，再手動選擇用神六親。</span>`)+`<div class="use-god-context"><b>輔助觀察</b><span>${observed||'無'}</span><b>排卦前確認</b><span>${c.useGod.questions.join('、')||'無'}${c.useGod.caution?`｜${c.useGod.caution}`:''}</span></div>`;
   $('#judgement').innerHTML=`<div class="tendency">${c.judgement.tendency}</div><div class="confidence">信心：${c.judgement.confidence} ${c.judgement.rawScore!==undefined?`・趨勢分 ${c.judgement.rawScore}`:''}</div><ol>${c.judgement.reasons.map(x=>`<li>${x}</li>`).join('')}</ol>`;
   $('#timing').innerHTML=c.timing.length?c.timing.map(t=>`<div class="timing-row"><b>${t.branch}</b><span>${t.reason}</span><small>${t.nextDates.map(d=>`${d.date} ${d.ganzhi}`).join('　')}</small></div>`).join(''):'<p>用神未明，暫不產生應期候選。</p>';
   $('#trace').textContent=JSON.stringify(c,null,2);
@@ -129,7 +141,7 @@ function renderHistory(){
 
 async function init(){
   DATA=await loadAllData(); categoryOptions(); $('#date').value=today(); $('#time').value='12:00'; renderLineInputs(); syncCalendarHints(); renderHistory();
-  $('#date').onchange=syncCalendarHints; $('#time').onchange=syncCalendarHints; $('#dayManual').oninput=e=>e.target.dataset.touched='1'; $('#monthManual').onchange=e=>e.target.dataset.touched='1';
+  $('#category').onchange=renderUseGodGuide; $('#date').onchange=syncCalendarHints; $('#time').onchange=syncCalendarHints; $('#dayManual').oninput=e=>e.target.dataset.touched='1'; $('#monthManual').onchange=e=>e.target.dataset.touched='1';
   $('#cast').onclick=cast; $('#demo').onclick=randomDemo; $('#reset').onclick=()=>{currentChart=null;renderLineInputs();$('#question').value='';$('#manualRelative').value='';$('#result').hidden=true;$('#empty').hidden=false};
   $('#saveFeedback').onclick=saveReview; $('#export').onclick=()=>currentChart&&downloadJson(currentChart,loadFeedbackMap()[currentChart.id]||null); $('#exportCasesJson').onclick=()=>exportDataset('json'); $('#exportCasesCsv').onclick=()=>exportDataset('csv');
   $('#copy').onclick=async()=>{if(currentChart){await copySummary(currentChart);$('#copy').textContent='已複製';setTimeout(()=>$('#copy').textContent='複製摘要',1000)}};
